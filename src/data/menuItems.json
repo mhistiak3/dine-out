@@ -1,0 +1,24 @@
+{
+  "list": [
+    {
+      "title": "Hamburger",
+      "image": "./items/hamburger.svg",
+      "price": "600"
+    },
+    {
+      "title": "Chicken Nuggets",
+      "image": "./items/chicken.svg",
+      "price": "400"
+    },
+    {
+      "title": "Submarine Sandwich",
+      "image": "./items/submarine.svg",
+      "price": "700"
+    },
+    {
+      "title": "Pizza slices",
+      "image": "./items/pizza.svg",
+      "price": "300"
+    }
+  ]
+}
