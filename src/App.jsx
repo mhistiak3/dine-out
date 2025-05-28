@@ -1,3 +1,4 @@
+import { useState } from "react";
 import CreateOrder from "./components/CreateOrder";
 import Navbar from "./components/Navbar";
 import OrderBoard from "./components/OrderBoard";
@@ -6,15 +7,22 @@ import OrderReports from "./components/OrderReports";
 import OrderSummery from "./components/OrderSummery";
 
 function App() {
+  const initialOrder = {
+    orderID: 1,
+    customerName: "Istiak",
+    itemList: [{ name: "Pizza", price: 300 }],
+    status: "pending",
+  };
+  const [orderList, setOrderList] = useState([initialOrder]);
   return (
     <div className="container h-screen flex flex-col overflow-auto">
       <Navbar />
 
       <OrderBoard>
-        <CreateOrder/>
+        <CreateOrder />
         <OrderDetails>
-          <OrderSummery/>
-          <OrderReports/>
+          <OrderSummery />
+          <OrderReports />
         </OrderDetails>
       </OrderBoard>
     </div>
