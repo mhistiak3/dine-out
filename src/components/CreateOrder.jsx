@@ -3,7 +3,7 @@ import calculatePrice from "../utils/calculatePrice";
 import findOrder from "../utils/findOrder";
 import MenuItemList from "./MenuItemList";
 
-const CreateOrder = ({ placeOrder }) => {
+const CreateOrder = ({ handlePlaceOrder }) => {
   const [order, setOrder] = useState({
     id: 0,
     customerName: "",
@@ -28,7 +28,7 @@ const CreateOrder = ({ placeOrder }) => {
     if (!order.customerName || order.itemList.length === 0) {
       alert("Customer name and Menu is required");
     } else {
-      placeOrder(order);
+      handlePlaceOrder(order);
       setOrder({
         id: 0,
         customerName: "",

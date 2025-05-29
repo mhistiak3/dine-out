@@ -10,21 +10,40 @@ function App() {
   const [orderList, setOrderList] = useState([]);
 
   // Create Order
-  const placeOrder = (order) => {
+  const handlePlaceOrder = (order) => {
     order.orderID =
       orderList.length > 0 ? orderList[orderList.length - 1].orderID + 1 : 1;
 
     setOrderList([...orderList, order]);
+  };
+  // Delivered Order
+  const handleDeliveredOrder = (orderID) => {
+    setOrderList(
+      orderList.map((order) => {
+        if (order.orderID === orderID) {
+          order.status = "delivered";
+        }
+        return order;
+      })
+    );
+  };
+  // Delete Order
+  const handleDeleteOrder = (orderID) => {
+    setOrderList(orderList.filter((order) => order.orderID !== orderID));
   };
   return (
     <div className="container h-screen flex flex-col overflow-auto">
       <Navbar />
 
       <OrderBoard>
-        <CreateOrder placeOrder={placeOrder} />
+        <CreateOrder handlePlaceOrder={handlePlaceOrder} />
         <OrderDetails>
           <OrderSummery orderList={orderList} />
-          <OrderReports orderList={orderList} />
+          <OrderReports
+            orderList={orderList}
+            handleDeliveredOrder={handleDeliveredOrder}
+            handleDeleteOrder={handleDeleteOrder}
+          />
         </OrderDetails>
       </OrderBoard>
     </div>

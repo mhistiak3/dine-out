@@ -1,7 +1,11 @@
 import calculatePrice from "../utils/calculatePrice";
 import OrderFilter from "./OrderFilter";
 
-const OrderReports = ({ orderList }) => {
+const OrderReports = ({
+  orderList,
+  handleDeliveredOrder,
+  handleDeleteOrder,
+}) => {
   return (
     <div>
       <div className="flex justify-between">
@@ -43,10 +47,16 @@ const OrderReports = ({ orderList }) => {
                       </span>
                     </td>
                     <td className="py-3">
-                      <button className="bg-dark/80 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300">
+                      <button
+                        className="bg-dark/80 hover:bg-red-600 text-xs px-3 py-1 rounded-full mr-1 transition-colors duration-300"
+                        onClick={() => handleDeleteOrder(order.orderID)}
+                      >
                         Delete
                       </button>
-                      <button className="bg-dark/80 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300">
+                      <button
+                        className="bg-dark/80 hover:bg-green-600 text-xs px-3 py-1 rounded-full transition-colors duration-300"
+                        onClick={() => handleDeliveredOrder(order.orderID)}
+                      >
                         DELIVER
                       </button>
                     </td>
