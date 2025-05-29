@@ -22,7 +22,7 @@ DineOut is a web application for managing food orders in a restaurant or fast-fo
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/dine-out.git
+   git clone repo_url
    cd dine-out
    ```
 
