@@ -17,12 +17,20 @@ function App() {
     status: "pending",
   };
   const [orderList, setOrderList] = useState([initialOrder]);
+
+  // Create Order
+  const placeOrder = (order)=>{
+    order.orderID = orderList.length +1
+console.log(order);
+
+    setOrderList([...orderList,order])
+  }
   return (
     <div className="container h-screen flex flex-col overflow-auto">
       <Navbar />
 
       <OrderBoard>
-        <CreateOrder />
+        <CreateOrder placeOrder={placeOrder} />
         <OrderDetails>
           <OrderSummery orderList={orderList} />
           <OrderReports orderList={orderList} />
