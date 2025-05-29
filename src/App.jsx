@@ -10,7 +10,10 @@ function App() {
   const initialOrder = {
     orderID: 1,
     customerName: "Istiak",
-    itemList: [{ name: "Pizza", price: 300 }],
+    itemList: [
+      { name: "Pizza slices", price: 300 },
+      { name: "Hamburger", price: 600 },
+    ],
     status: "pending",
   };
   const [orderList, setOrderList] = useState([initialOrder]);
@@ -21,8 +24,8 @@ function App() {
       <OrderBoard>
         <CreateOrder />
         <OrderDetails>
-          <OrderSummery />
-          <OrderReports />
+          <OrderSummery orderList={orderList} />
+          <OrderReports orderList={orderList} />
         </OrderDetails>
       </OrderBoard>
     </div>
