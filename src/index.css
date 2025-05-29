@@ -33,12 +33,12 @@ select {
 }
 
 .items-container {
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
 }
 
 .reports-container {
-  max-height: 340px;
+  max-height: 440px;
   overflow-y: auto;
 }
 
