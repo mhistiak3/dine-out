@@ -8,6 +8,7 @@ import OrderSummery from "./components/OrderSummery";
 
 function App() {
   const [orderList, setOrderList] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("all");
 
   // Create Order
   const handlePlaceOrder = (order) => {
@@ -31,6 +32,22 @@ function App() {
   const handleDeleteOrder = (orderID) => {
     setOrderList(orderList.filter((order) => order.orderID !== orderID));
   };
+
+  // Filter Order
+  const handleFilter = (status) => {
+    setFilterStatus(status);
+  };
+  // filtered order
+  const filteredOrders = () => {
+    const orders = [...orderList];
+
+    if (filterStatus === "all") {
+      return orderList;
+    } else {
+      const filtered = orders.filter((order) => order.status === filterStatus);
+      return filtered;
+    }
+  };
   return (
     <div className="container h-screen flex flex-col overflow-auto">
       <Navbar />
@@ -40,9 +57,10 @@ function App() {
         <OrderDetails>
           <OrderSummery orderList={orderList} />
           <OrderReports
-            orderList={orderList}
+            orderList={filteredOrders()}
             handleDeliveredOrder={handleDeliveredOrder}
             handleDeleteOrder={handleDeleteOrder}
+            handleFilter={handleFilter}
           />
         </OrderDetails>
       </OrderBoard>

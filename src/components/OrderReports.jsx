@@ -5,13 +5,14 @@ const OrderReports = ({
   orderList,
   handleDeliveredOrder,
   handleDeleteOrder,
+  handleFilter
 }) => {
   return (
     <div>
       <div className="flex justify-between">
         <h2 className="text-xl font-bold mb-4">Order Reports</h2>
 
-        <OrderFilter />
+        <OrderFilter handleFilter={handleFilter} />
       </div>
       <div className="bg-light/10 rounded-lg p-4">
         <div className="reports-container">
