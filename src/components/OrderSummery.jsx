@@ -1,6 +1,6 @@
 import SummeryCard from "./SummeryCard";
 
-const OrderSummery = () => {
+const OrderSummery = ({orderList}) => {
   return (
     <div>
       <h2 className="text-xl font-bold mb-4">Order Summary</h2>
@@ -10,7 +10,7 @@ const OrderSummery = () => {
           title={"Total Order"}
           numberColor={"text-yellow-500"}
           classNames={"bg-yellow-800 text-yellow-200"}
-          number={"8"}
+          number={orderList.length}
         />
 
         {/* <!-- Pending Orders --> */}
@@ -18,7 +18,7 @@ const OrderSummery = () => {
           title={"Pending"}
           numberColor={"text-red-400"}
           classNames={"bg-red-800/50 text-red-200"}
-          number={"8"}
+          number={orderList.filter((order)=>order.status === "pending").length}
         />
 
         {/* <!-- Delivered Orders --> */}
@@ -26,7 +26,7 @@ const OrderSummery = () => {
           title={"Delivered"}
           numberColor={"text-green-500"}
           classNames={"bg-green-800/50 text-green-200"}
-          number={"2"}
+          number={orderList.filter((order)=>order.status !== "pending").length}
         />
       </div>
     </div>

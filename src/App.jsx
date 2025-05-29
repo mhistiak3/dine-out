@@ -7,24 +7,15 @@ import OrderReports from "./components/OrderReports";
 import OrderSummery from "./components/OrderSummery";
 
 function App() {
-  const initialOrder = {
-    orderID: 1,
-    customerName: "Istiak",
-    itemList: [
-      { name: "Pizza slices", price: 300 },
-      { name: "Hamburger", price: 600 },
-    ],
-    status: "pending",
-  };
-  const [orderList, setOrderList] = useState([initialOrder]);
+  const [orderList, setOrderList] = useState([]);
 
   // Create Order
-  const placeOrder = (order)=>{
-    order.orderID = orderList.length +1
-console.log(order);
+  const placeOrder = (order) => {
+    order.orderID =
+      orderList.length > 0 ? orderList[orderList.length - 1].orderID + 1 : 1;
 
-    setOrderList([...orderList,order])
-  }
+    setOrderList([...orderList, order]);
+  };
   return (
     <div className="container h-screen flex flex-col overflow-auto">
       <Navbar />
